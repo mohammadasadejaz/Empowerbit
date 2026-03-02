@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initScrollReveal();
     initStatsCounter();
-    initParallax();
-    initCursorFlare();
     initTerminalQA();
 });
 
@@ -30,7 +28,7 @@ function initLoader() {
 
         // Trigger initial animations
         triggerHeroAnimations();
-    }, 2800);
+    }, 1500);
 
     // Disable scrolling while loading
     document.body.style.overflow = 'hidden';
@@ -286,58 +284,6 @@ function showNotification(message, type) {
 }
 
 
-/* ---------- Parallax Effect ---------- */
-function initParallax() {
-    const orbs = document.querySelectorAll('.gradient-orb');
-
-    window.addEventListener('scroll', function() {
-        const scrolled = window.scrollY;
-
-        orbs.forEach(function(orb, index) {
-            const speed = 0.1 + (index * 0.05);
-            orb.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
-        });
-    });
-}
-
-
-/* ---------- Cursor Spotlight (Hero Only) ---------- */
-function initCursorFlare() {
-    var hero = document.querySelector('.hero');
-    var spot = document.getElementById('cursorSpotlight');
-    if (!hero || !spot || window.innerWidth <= 1024) return;
-
-    var mouse = { x: 0.5, y: 0.5 };
-    var current = { x: 0.5, y: 0.5 };
-    var active = false;
-    var raf;
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    hero.addEventListener('mousemove', function(e) {
-        var rect = hero.getBoundingClientRect();
-        mouse.x = (e.clientX - rect.left) / rect.width;
-        mouse.y = (e.clientY - rect.top) / rect.height;
-        if (!active) { active = true; tick(); }
-    });
-
-    hero.addEventListener('mouseleave', function() {
-        active = false;
-        if (raf) cancelAnimationFrame(raf);
-    });
-
-    function tick() {
-        if (!active) return;
-
-        current.x = lerp(current.x, mouse.x, 0.07);
-        current.y = lerp(current.y, mouse.y, 0.07);
-
-        spot.style.setProperty('--spot-x', (current.x * 100) + '%');
-        spot.style.setProperty('--spot-y', (current.y * 100) + '%');
-
-        raf = requestAnimationFrame(tick);
-    }
-}
 
 
 /* ---------- Chat Q&A ---------- */
