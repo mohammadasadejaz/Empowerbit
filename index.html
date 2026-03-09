@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -75,9 +75,9 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <h1 class="hero-title">
-                        <span class="line reveal-up">We Build</span>
-                        <span class="line reveal-up"><span class="text-gradient">Digital</span> Solutions</span>
-                        <span class="line reveal-up">That <span class="highlight">Deliver</span></span>
+                        <span class="line reveal-up">We craft software</span>
+                        <span class="line reveal-up">that actually</span>
+                        <span class="line reveal-up"><span class="text-gradient">moves the needle.</span></span>
                     </h1>
 
                     <p class="hero-description reveal-up">
@@ -98,9 +98,11 @@
                             <span>Learn More</span>
                         </a>
                     </div>
+
                 </div>
 
                 <div class="hero-visual reveal-up">
+                    <div class="chat-glow-border">
                     <div class="chat-window" id="chatQA">
                         <div class="chat-header">
                             <div class="chat-header-left">
@@ -146,73 +148,30 @@
                         </div>
                     </div>
                 </div>
+                </div>
+
+                <div class="hero-stats reveal-up">
+                    <div class="stat">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-suffix">%</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="6">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
-        </div>
     </section>
-
-    <!-- ========== HERO STATS ========== -->
-    <div class="hero-stats-strip">
-        <div class="container">
-            <div class="hero-stats reveal-up">
-                <div class="stat">
-                    <span class="stat-number" data-count="50">0</span>
-                    <span class="stat-label">Projects Delivered</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" data-count="98">0</span>
-                    <span class="stat-suffix">%</span>
-                    <span class="stat-label">Client Satisfaction</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" data-count="6">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== MARQUEE ========== -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <div class="marquee-content">
-                <span>Web Development</span>
-                <span class="dot"></span>
-                <span>Mobile Apps</span>
-                <span class="dot"></span>
-                <span>AI Solutions</span>
-                <span class="dot"></span>
-                <span>UI/UX Design</span>
-                <span class="dot"></span>
-                <span>E-Commerce</span>
-                <span class="dot"></span>
-                <span>Cloud Solutions</span>
-                <span class="dot"></span>
-                <span>Web Development</span>
-                <span class="dot"></span>
-                <span>Mobile Apps</span>
-                <span class="dot"></span>
-                <span>AI Solutions</span>
-                <span class="dot"></span>
-                <span>UI/UX Design</span>
-                <span class="dot"></span>
-                <span>E-Commerce</span>
-                <span class="dot"></span>
-                <span>Cloud Solutions</span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </div>
 
     <!-- ========== ABOUT SECTION ========== -->
     <section class="about" id="about">
@@ -258,128 +217,54 @@
     <!-- ========== SERVICES SECTION ========== -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title reveal-up">
-                    What we <span class="text-gradient">do</span>
-                </h2>
-                <p class="section-subtitle reveal-up">
-                    We handle the full process — from planning and design
-                    through development and launch.
-                </p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">01</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Web Development</h3>
-                    <p class="service-description">
-                        Custom web applications built with React, Next.js, and Node.js.
-                        Fast, scalable, and beautifully crafted.
-                    </p>
-                    <div class="service-tags">
-                        <span>React</span><span>Next.js</span><span>Node.js</span>
-                    </div>
-
+            <div class="services-layout">
+                <div class="services-left reveal-up">
+                    <h2 class="section-title">What we <span class="text-gradient">do</span></h2>
+                    <p class="services-intro">From first idea to live product — we handle design, code, and launch.</p>
                 </div>
-
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">02</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="5" y="2" width="14" height="20" rx="2"/>
-                            <path d="M12 18h.01"/>
-                        </svg>
+                <div class="services-right">
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">Web Development</h3>
+                            <span class="service-tags">React, Next.js, Node.js</span>
+                        </div>
+                        <p class="service-desc">Custom web apps that are fast, scalable, and built to last.</p>
                     </div>
-                    <h3 class="service-title">Mobile Apps</h3>
-                    <p class="service-description">
-                        Native and cross-platform mobile apps for iOS and Android
-                        that users love to use.
-                    </p>
-                    <div class="service-tags">
-                        <span>iOS</span><span>Android</span><span>React Native</span>
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">Mobile Apps</h3>
+                            <span class="service-tags">iOS, Android, React Native</span>
+                        </div>
+                        <p class="service-desc">Native and cross-platform apps that users actually enjoy using.</p>
                     </div>
-
-                </div>
-
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">03</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 2v4m0 12v4M2 12h4m12 0h4m-3.3-6.7l-2.8 2.8m-5.8 5.8l-2.8 2.8m0-11.4l2.8 2.8m5.8 5.8l2.8 2.8"/>
-                        </svg>
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">AI Solutions</h3>
+                            <span class="service-tags">ML, Automation, ChatBots</span>
+                        </div>
+                        <p class="service-desc">Chatbots, automation tools, and integrations that cut manual work.</p>
                     </div>
-                    <h3 class="service-title">AI Solutions</h3>
-                    <p class="service-description">
-                        Custom chatbots, automation tools, and machine learning
-                        integrations that save time and reduce manual work.
-                    </p>
-                    <div class="service-tags">
-                        <span>ML</span><span>Automation</span><span>ChatBots</span>
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">UI/UX Design</h3>
+                            <span class="service-tags">Figma, Prototyping, Research</span>
+                        </div>
+                        <p class="service-desc">Interfaces designed and tested with real users before code is written.</p>
                     </div>
-
-                </div>
-
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">04</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                            <circle cx="11" cy="11" r="2"/>
-                        </svg>
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">E-Commerce</h3>
+                            <span class="service-tags">Shopify, WooCommerce, Payments</span>
+                        </div>
+                        <p class="service-desc">Online stores with payments, inventory, and smooth checkout flows.</p>
                     </div>
-                    <h3 class="service-title">UI/UX Design</h3>
-                    <p class="service-description">
-                        Clean, intuitive interfaces designed in Figma and tested
-                        with real users before a single line of code is written.
-                    </p>
-                    <div class="service-tags">
-                        <span>Figma</span><span>Prototyping</span><span>Research</span>
+                    <div class="service-item reveal-up">
+                        <div class="service-head">
+                            <h3 class="service-title">Cloud & DevOps</h3>
+                            <span class="service-tags">AWS, Docker, CI/CD</span>
+                        </div>
+                        <p class="service-desc">Server setup, pipelines, and hosting so your app stays up and scales.</p>
                     </div>
-
-                </div>
-
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">05</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">E-Commerce</h3>
-                    <p class="service-description">
-                        Online stores built on Shopify or WooCommerce with
-                        payment integration, inventory management, and checkout flows.
-                    </p>
-                    <div class="service-tags">
-                        <span>Shopify</span><span>WooCommerce</span><span>Payments</span>
-                    </div>
-
-                </div>
-
-                <div class="service-card reveal-up">
-                    <span class="service-watermark">06</span>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Cloud & DevOps</h3>
-                    <p class="service-description">
-                        Server setup, deployment pipelines, and cloud hosting
-                        on AWS so your app stays up and scales when it needs to.
-                    </p>
-                    <div class="service-tags">
-                        <span>AWS</span><span>Docker</span><span>CI/CD</span>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -396,16 +281,12 @@
 
             <div class="products-list">
                 <a href="spark-crm.html" class="product-row reveal-up">
-                    <div class="product-visual grad-1">
-                        <div class="product-pattern"></div>
-                        <span class="product-number">01</span>
-                        <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
+                    <div class="product-visual">
+                        <img src="images/spark2.png" alt="Everything Solar Dashboard" class="product-img" loading="lazy">
                     </div>
                     <div class="product-info">
                         <span class="product-cat">CRM System</span>
-                        <h3 class="product-title">Spark CRM</h3>
+                        <h3 class="product-title">Everything Solar</h3>
                         <p class="product-desc">A CRM for solar companies — manages leads, connects to financing APIs, and tracks deals from first contact to close.</p>
                         <div class="product-tech">
                             <span>React</span><span>Node.js</span><span>PostgreSQL</span>
@@ -414,18 +295,13 @@
                     </div>
                 </a>
 
-                <a href="eagle-eye-drone.html" class="product-row row-reverse reveal-up">
-                    <div class="product-visual grad-2">
-                        <div class="product-pattern"></div>
-                        <span class="product-number">02</span>
-                        <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                        </svg>
+                <a href="sightflight.html" class="product-row row-reverse reveal-up">
+                    <div class="product-visual">
+                        <img src="images/sightflight.png" alt="SightFlight Drone Survey Platform" class="product-img" loading="lazy">
                     </div>
                     <div class="product-info">
                         <span class="product-cat">Drone Technology</span>
-                        <h3 class="product-title">Eagle Eye Drone</h3>
+                        <h3 class="product-title">SightFlight</h3>
                         <p class="product-desc">A drone survey tool for roofing and solar companies. Captures property data, runs measurements automatically, and syncs results to your CRM.</p>
                         <div class="product-tech">
                             <span>React</span><span>Python</span><span>AWS</span>
@@ -434,21 +310,16 @@
                     </div>
                 </a>
 
-                <a href="pepper-crm.html" class="product-row reveal-up">
-                    <div class="product-visual grad-3">
-                        <div class="product-pattern"></div>
-                        <span class="product-number">03</span>
-                        <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+                <a href="alfred.html" class="product-row reveal-up">
+                    <div class="product-visual">
+                        <img src="images/alfred.png" alt="Alfred AI Assistant" class="product-img" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <span class="product-cat">Real Estate</span>
-                        <h3 class="product-title">Pepper CRM</h3>
-                        <p class="product-desc">A telemarketing CRM for real estate teams — tracks calls, manages leads, automates follow-ups, and shows team performance.</p>
+                        <span class="product-cat">AI Assistant</span>
+                        <h3 class="product-title">Alfred</h3>
+                        <p class="product-desc">An intelligent AI-powered assistant that automates workflows, manages tasks, and helps teams work smarter with natural language commands.</p>
                         <div class="product-tech">
-                            <span>Laravel</span><span>Vue.js</span><span>MySQL</span>
+                            <span>Python</span><span>AI/ML</span><span>NLP</span>
                         </div>
                         <span class="product-cta">View Product <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
@@ -467,12 +338,59 @@
                 <h2 class="cta-title">Have a project in <span class="text-gradient">mind</span>?</h2>
                 <p class="cta-text">Tell us what you're working on and we'll figure out how we can help.</p>
                 <div class="cta-actions">
-                    <a href="mailto:hrempowerbits@gmail.com" class="btn-cta-primary">
+                    <a href="https://mail.google.com/mail/?view=cm&to=hrempowerbits@gmail.com" target="_blank" class="btn-cta-primary">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
                         Get in Touch
                     </a>
                     <a href="about.html" class="btn-cta-secondary">Learn About Us</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TRUSTED BY ========== -->
+    <section class="trusted-by">
+        <div class="container">
+            <p class="trusted-by-label reveal-up">Trusted by companies we work with</p>
+        </div>
+        <div class="marquee">
+            <div class="marquee-track">
+                <div class="marquee-card">Codistan</div>
+                <div class="marquee-card">TechVision</div>
+                <div class="marquee-card">AlphaNet</div>
+                <div class="marquee-card">NexGen Solutions</div>
+                <div class="marquee-card">CloudAxis</div>
+                <div class="marquee-card">DataPeak</div>
+                <div class="marquee-card">BrightEdge</div>
+                <div class="marquee-card">Devsinc</div>
+                <div class="marquee-card">Codistan</div>
+                <div class="marquee-card">TechVision</div>
+                <div class="marquee-card">AlphaNet</div>
+                <div class="marquee-card">NexGen Solutions</div>
+                <div class="marquee-card">CloudAxis</div>
+                <div class="marquee-card">DataPeak</div>
+                <div class="marquee-card">BrightEdge</div>
+                <div class="marquee-card">Devsinc</div>
+            </div>
+        </div>
+        <div class="marquee marquee-reverse">
+            <div class="marquee-track">
+                <div class="marquee-card">InnovateTech</div>
+                <div class="marquee-card">Folio3</div>
+                <div class="marquee-card">SystemsLtd</div>
+                <div class="marquee-card">VentureDive</div>
+                <div class="marquee-card">Arbisoft</div>
+                <div class="marquee-card">NetSol</div>
+                <div class="marquee-card">TeraByte</div>
+                <div class="marquee-card">KeepTruckin</div>
+                <div class="marquee-card">InnovateTech</div>
+                <div class="marquee-card">Folio3</div>
+                <div class="marquee-card">SystemsLtd</div>
+                <div class="marquee-card">VentureDive</div>
+                <div class="marquee-card">Arbisoft</div>
+                <div class="marquee-card">NetSol</div>
+                <div class="marquee-card">TeraByte</div>
+                <div class="marquee-card">KeepTruckin</div>
             </div>
         </div>
     </section>
@@ -510,7 +428,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             0311-9116611
                         </a>
-                        <a href="mailto:hrempowerbits@gmail.com" class="footer-contact-link">
+                        <a href="https://mail.google.com/mail/?view=cm&to=hrempowerbits@gmail.com" target="_blank" class="footer-contact-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
                             hrempowerbits@gmail.com
                         </a>
@@ -539,7 +457,7 @@
                     <div class="footer-column">
                         <h4>Connect</h4>
                         <ul>
-                            <li><a href="mailto:hrempowerbits@gmail.com">Contact</a></li>
+                            <li><a href="https://mail.google.com/mail/?view=cm&to=hrempowerbits@gmail.com" target="_blank">Contact</a></li>
                             <li><a href="careers.html">Careers</a></li>
                             <li><a href="#">LinkedIn</a></li>
                             <li><a href="#">Twitter</a></li>

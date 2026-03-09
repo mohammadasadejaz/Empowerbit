@@ -220,7 +220,7 @@ function initMagneticButtons() {
     const magneticElements = document.querySelectorAll('.magnetic');
 
     // Only on desktop
-    if (window.innerWidth <= 1024) return;
+    if (window.innerWidth <= 992) return;
 
     magneticElements.forEach(function(element) {
         element.addEventListener('mousemove', function(e) {
@@ -451,7 +451,7 @@ function initTerminalQA() {
 function initTiltEffect() {
     const cards = document.querySelectorAll('.service-card, .project-card, .visual-card');
 
-    if (window.innerWidth <= 1024) return;
+    if (window.innerWidth <= 992) return;
 
     cards.forEach(function(card) {
         card.addEventListener('mousemove', function(e) {
@@ -701,6 +701,16 @@ function initApplyForm() {
     var fileRemoveBtn = document.getElementById('fileRemoveBtn');
 
     if (fileUploadZone && fileInput) {
+        // Click anywhere on the zone to open file picker
+        fileUploadZone.addEventListener('click', function(e) {
+            if (e.target === fileRemoveBtn || (fileRemoveBtn && fileRemoveBtn.contains(e.target))) return;
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
         fileUploadZone.addEventListener('dragover', function(e) {
             e.preventDefault();
             fileUploadZone.classList.add('dragover');
@@ -784,7 +794,7 @@ function initApplyForm() {
             dob: getValue('applicantDOB'),
             city: getValue('applicantCity'),
             linkedin: getValue('applicantLinkedIn'),
-            position: getValue('applicantPosition'),
+            position: getValue('applicantPosition') || (document.querySelector('.product-hero-title') ? document.querySelector('.product-hero-title').textContent.trim() : ''),
             source: getValue('applicantSource'),
             notice: getValue('applicantNotice'),
             experience: getValue('applicantExperience'),
@@ -827,11 +837,6 @@ function initApplyForm() {
             focusField('applicantPhone');
             return;
         }
-        if (!formData.position) {
-            showNotification('Please select a position.', 'error');
-            focusField('applicantPosition');
-            return;
-        }
         if (!resumeFile) {
             showNotification('Please upload your CV/Resume.', 'error');
             if (fileUploadZone) fileUploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -844,8 +849,20 @@ function initApplyForm() {
         submitBtn.innerHTML = '<span class="btn-text">Submitting...</span>';
         submitBtn.disabled = true;
 
-        // Simulate API call (replace with actual endpoint)
+        // Google Apps Script URL — replace with your deployed script URL
+        var GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzOsidEc6PcEVafcCfLwMYLFSRNA5q07E-F9O5lJdvm64YkQKjskTY9xVUPc1ZBd8xCFg/exec';
+
+        // Send to Google Sheets
+        var params = new URLSearchParams();
+        Object.keys(formData).forEach(function(key) {
+            if (formData[key]) params.append(key, formData[key]);
+        });
+
+        fetch(GOOGLE_SHEET_URL + '?' + params.toString(), { mode: 'no-cors' }).catch(function(){});
+
+        // Show success after a short delay
         setTimeout(function() {
+
             showNotification('Application submitted successfully! We\'ll review it and get back to you soon.', 'success');
             form.reset();
 
@@ -854,9 +871,14 @@ function initApplyForm() {
             if (fileSelected) fileSelected.style.display = 'none';
             if (fileInput) fileInput._customFile = null;
 
+            // Reset custom select dropdowns
+            form.querySelectorAll('.select-text').forEach(function(el) {
+                el.textContent = '';
+            });
+
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 1500);
+        }, 2000);
     });
 
     function getValue(id) {
