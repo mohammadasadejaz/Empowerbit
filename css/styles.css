@@ -29,8 +29,8 @@
                      radial-gradient(at 0% 50%, rgba(50, 195, 225, 0.06) 0px, transparent 50%);
 
     /* Typography */
-    --font-heading: 'sora', -apple-system, sans-serif;
-    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
 
     /* Spacing */
     --space-xs: 0.5rem;
@@ -257,10 +257,27 @@ em {
 }
 
 .text-gradient {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #32C3E1 0%, #5ed4ea 25%, #a78bfa 50%, #32C3E1 75%, #5ed4ea 100%);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.text-outline {
+    -webkit-text-stroke: 1.5px rgba(50, 195, 225, 0.7);
+    -webkit-text-fill-color: transparent;
+    transition: all 0.5s ease;
+}
+
+.text-outline:hover {
+    -webkit-text-fill-color: var(--accent-primary);
 }
 
 .section-title {
@@ -454,9 +471,50 @@ em {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(50, 195, 225, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(94, 212, 234, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 60% 80%, rgba(50, 195, 225, 0.04) 0%, transparent 60%);
 }
 
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(50, 195, 225, 0.12) 0%, transparent 70%);
+    top: -10%;
+    left: -5%;
+    animation: floatOrb 20s ease-in-out infinite alternate;
+    filter: blur(80px);
+}
 
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+    bottom: -10%;
+    right: -5%;
+    animation: floatOrb2 18s ease-in-out infinite alternate;
+    filter: blur(80px);
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(10%, 15%) scale(1.1); }
+    66% { transform: translate(-5%, 5%) scale(0.95); }
+    100% { transform: translate(5%, -10%) scale(1.05); }
+}
+
+@keyframes floatOrb2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10%, -8%) scale(1.15); }
+    100% { transform: translate(5%, 10%) scale(0.9); }
+}
 
 /* Hero Grid Layout */
 .hero-grid {
@@ -479,11 +537,11 @@ em {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.08;
     margin-bottom: var(--space-md);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .hero-title .line {
@@ -534,12 +592,14 @@ em {
 }
 
 .btn-primary {
-    background: #1a9ab0;
-    border: 1px solid #1a9ab0;
+    background: linear-gradient(135deg, #1a9ab0 0%, #167a8c 100%);
+    border: 1px solid rgba(50, 195, 225, 0.3);
     color: #fff;
     font-weight: 700;
     letter-spacing: 0.03em;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 20px rgba(50, 195, 225, 0.15), 0 0 60px rgba(50, 195, 225, 0.06);
+    transition: all var(--transition-normal);
 }
 
 .btn-primary .btn-icon {
@@ -552,9 +612,10 @@ em {
 }
 
 .btn-primary:hover {
-    background: #158a9e;
-    border-color: #158a9e;
-    box-shadow: none;
+    background: linear-gradient(135deg, #1da8b8 0%, #1a9ab0 100%);
+    border-color: rgba(50, 195, 225, 0.4);
+    box-shadow: 0 0 25px rgba(50, 195, 225, 0.25), 0 0 70px rgba(50, 195, 225, 0.1);
+    transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -565,7 +626,8 @@ em {
 
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: none;
+    border-color: rgba(50, 195, 225, 0.25);
+    box-shadow: inset 0 0 20px rgba(50, 195, 225, 0.04);
 }
 
 /* Hero Stats */
@@ -574,8 +636,13 @@ em {
     align-items: center;
     justify-content: center;
     gap: var(--space-xl);
-    margin-top: var(--space-lg);
+    margin-top: var(--space-xl);
     grid-column: 1 / -1;
+    padding: var(--space-lg) var(--space-xl);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
 }
 
 .stat {
@@ -586,7 +653,10 @@ em {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #fff 30%, #32C3E1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .stat-suffix {
@@ -670,11 +740,12 @@ em {
 .chat-glow-border {
     position: relative;
     z-index: 0;
-    border-radius: var(--radius-lg);
+    border-radius: 28px;
     overflow: hidden;
     width: 100%;
     max-width: 520px;
     animation: heroFadeIn 1s ease 2.2s both;
+    box-shadow: 0 0 40px rgba(50, 195, 225, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .chat-glow-border::before {
@@ -690,9 +761,9 @@ em {
     content: '';
     position: absolute;
     inset: 1px;
-    background: #0f0f19;
+    background: #0a0a12;
     border: 1px solid rgba(50, 195, 225, 0.15);
-    border-radius: calc(var(--radius-lg) - 1px);
+    border-radius: 27px;
     z-index: -1;
 }
 
@@ -702,7 +773,7 @@ em {
     height: 520px;
     background: transparent;
     border: none;
-    border-radius: var(--radius-lg);
+    border-radius: 28px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -760,9 +831,9 @@ em {
     font-size: 0.55rem;
     font-weight: 600;
     letter-spacing: 0.06em;
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.08);
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: rgba(34, 197, 94, 0.7);
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.12);
     padding: 2px 8px;
     border-radius: 20px;
 }
@@ -776,7 +847,7 @@ em {
     flex-direction: column;
     gap: 16px;
     scrollbar-width: thin;
-    scrollbar-color: rgba(50, 195, 225, 0.15) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
 }
 
 .chat-body::-webkit-scrollbar {
@@ -788,7 +859,7 @@ em {
 }
 
 .chat-body::-webkit-scrollbar-thumb {
-    background: rgba(50, 195, 225, 0.15);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 3px;
 }
 
@@ -831,8 +902,8 @@ em {
 }
 
 .chat-message.sent .chat-bubble {
-    background: rgba(50, 195, 225, 0.12);
-    border: 1px solid rgba(50, 195, 225, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-primary);
     border-bottom-right-radius: 4px;
 }
@@ -902,9 +973,9 @@ em {
 }
 
 .chat-q-btn.active {
-    background: rgba(50, 195, 225, 0.08);
-    border-color: rgba(50, 195, 225, 0.25);
-    color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
 }
 
 .chat-q-btn:disabled {
@@ -940,7 +1011,7 @@ em {
 }
 
 .chat-input:focus {
-    border-color: rgba(50, 195, 225, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .chat-send-btn {
