@@ -67,17 +67,65 @@
     </nav>
 
     <!-- ========== JOB HERO ========== -->
-    <section class="product-hero">
-        <div class="product-hero-bg grad-2">
-            <div class="product-pattern"></div>
+    <section class="job-hero">
+        <div class="job-hero-bg">
+            <span class="job-hero-float job-float-1">&lt;/&gt;</span>
+            <span class="job-hero-float job-float-2">{ }</span>
+            <span class="job-hero-float job-float-3">( )</span>
+            <span class="job-hero-float job-float-4">[ ]</span>
         </div>
-        <div class="product-hero-overlay"></div>
         <div class="container">
-            <div class="product-hero-content">
-                <h1 class="product-hero-title">Full Stack Developer</h1>
-                <p class="product-hero-desc">Build end-to-end web applications from frontend interfaces to backend APIs. Work across the entire stack to deliver scalable, production-ready solutions.</p>
-                <div class="product-hero-tech">
-                    <span>React</span><span>Node.js</span><span>Python</span><span>MongoDB</span><span>REST APIs</span>
+            <div class="job-hero-grid">
+                <div class="job-hero-content">
+                    <a href="careers.html" class="job-hero-back">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        All Positions
+                    </a>
+                    <h1 class="job-hero-title">Full Stack Developer</h1>
+                    <p class="job-hero-desc">Build end-to-end web applications from frontend interfaces to backend APIs. Work across the entire stack to deliver scalable, production-ready solutions.</p>
+                    <div class="job-hero-meta">
+                        <span class="job-meta-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Remote
+                        </span>
+                        <span class="job-meta-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            Full-time
+                        </span>
+                        <span class="job-meta-pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            2+ Years
+                        </span>
+                    </div>
+                    <a href="#apply" class="job-hero-cta">
+                        Apply Now
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="job-hero-visual">
+                    <div class="job-code-editor">
+                        <div class="job-code-bar">
+                            <span class="job-code-dot"></span>
+                            <span class="job-code-dot"></span>
+                            <span class="job-code-dot"></span>
+                            <span class="job-code-filename">server.js</span>
+                        </div>
+                        <div class="job-code-body">
+                            <code><span class="code-kw">const</span> express = <span class="code-fn">require</span>(<span class="code-str">'express'</span>);</code>
+                            <code><span class="code-kw">const</span> app = <span class="code-fn">express</span>();</code>
+                            <code></code>
+                            <code>app.<span class="code-fn">get</span>(<span class="code-str">'/api/users'</span>, <span class="code-kw">async</span> (req, res) <span class="code-kw">=&gt;</span> {</code>
+                            <code>  <span class="code-kw">const</span> users = <span class="code-kw">await</span> User.<span class="code-fn">find</span>();</code>
+                            <code>  res.<span class="code-fn">json</span>({ <span class="code-attr">data</span>: users });</code>
+                            <code>});</code>
+                            <code></code>
+                            <code>app.<span class="code-fn">listen</span>(<span class="code-num">3000</span>, () <span class="code-kw">=&gt;</span> {</code>
+                            <code>  console.<span class="code-fn">log</span>(</code>
+                            <code>    <span class="code-str">'Server running on :3000'</span></code>
+                            <code>  );</code>
+                            <code>});</code>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

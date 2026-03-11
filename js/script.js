@@ -149,7 +149,7 @@ function initScrollReveal() {
 
                 setTimeout(function() {
                     entry.target.classList.add('visible');
-                }, index * 100);
+                }, index * 50);
 
                 observer.unobserve(entry.target);
             }
