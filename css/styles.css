@@ -955,6 +955,7 @@ em {
     font-size: 0.8rem;
     line-height: 1.55;
     word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .chat-message.sent .chat-bubble {

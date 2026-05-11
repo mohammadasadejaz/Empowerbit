@@ -296,58 +296,10 @@ function initTerminalQA() {
     var chatInput = document.getElementById('chatInput');
     var chatSendBtn = document.getElementById('chatSendBtn');
     var isTyping = false;
-
-    var qaData = [
-        {
-            keywords: ['service', 'offer', 'do you do', 'what do you', 'help with'],
-            answer: 'We build custom web applications, mobile apps, AI-powered solutions, and stunning UI/UX designs. From concept to deployment, we handle it all.'
-        },
-        {
-            keywords: ['tech', 'stack', 'technology', 'framework', 'language', 'tools', 'react', 'node'],
-            answer: 'React, Next.js, Node.js, Python, PostgreSQL, AWS, and more. We pick the best tools for each project to ensure performance and scalability.'
-        },
-        {
-            keywords: ['process', 'approach', 'how do you work', 'workflow', 'steps', 'methodology'],
-            answer: 'We follow a 4-step approach: Strategy, Design, Develop, and Launch. Each phase includes close collaboration and iterative feedback.'
-        },
-        {
-            keywords: ['why', 'choose', 'different', 'better', 'special', 'unique', 'stand out'],
-            answer: '6+ years of experience, 50+ projects delivered, and 98% client satisfaction. We treat every project as our own and deliver nothing less than excellence.'
-        },
-        {
-            keywords: ['long', 'time', 'duration', 'timeline', 'deadline', 'fast', 'quick', 'weeks', 'months'],
-            answer: 'Timelines vary by scope. A typical website takes 4-6 weeks, while complex apps may take 3-6 months. We always provide a clear timeline before starting.'
-        },
-        {
-            keywords: ['support', 'after', 'launch', 'maintain', 'maintenance', 'update', 'post', 'ongoing'],
-            answer: 'Absolutely! We provide ongoing maintenance, performance monitoring, and feature updates. Our team is available 24/7 to keep your product running smoothly.'
-        },
-        {
-            keywords: ['price', 'cost', 'budget', 'charge', 'rate', 'expensive', 'cheap', 'affordable', 'pay', 'money', 'quote'],
-            answer: 'Our pricing depends on project scope and complexity. We offer competitive rates and flexible packages. Reach out through our contact form for a free quote!'
-        },
-        {
-            keywords: ['contact', 'reach', 'email', 'call', 'phone', 'touch', 'talk', 'meet', 'discuss'],
-            answer: 'You can reach us at contact@empowerbits.com or use the contact form on this page. We typically respond within 24 hours!'
-        },
-        {
-            keywords: ['team', 'people', 'who', 'size', 'members', 'developer', 'designer', 'employee'],
-            answer: 'We are a tight-knit team of skilled developers, designers, and strategists. Everyone brings deep expertise and a passion for building great digital products.'
-        },
-        {
-            keywords: ['hire', 'hiring', 'career', 'job', 'work with you', 'join', 'position', 'opening', 'apply'],
-            answer: 'We are always looking for talented people! Check out our Careers page for open positions. We offer remote-first work, flexible hours, and a great team culture.'
-        },
-        {
-            keywords: ['hello', 'hi', 'hey', 'greet', 'good morning', 'good evening', 'sup', 'yo'],
-            answer: 'Hey there! Great to have you here. Feel free to ask anything about our services, process, or team. We are happy to help!'
-        }
-    ];
-
-    var defaultAnswer = "That's a great question! We'd love to discuss it in detail. Please reach out via our contact form or email us at contact@empowerbits.com and we'll get back to you shortly.";
-
-    // Predefined button questions mapped to qaData indexes
-    var buttonMap = [0, 1, 2, 3, 4, 5];
+    var chatApiUrl = 'https://empowerbits-chatbot-hnzy.vercel.app/api/chat';
+    var requestTimeoutMs = 15000;
+    var fallbackErrorMessage = "I couldn't reach the assistant right now. Please try again in a moment.";
+    var assistantAvatar = '<div class="chat-msg-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
 
     function scrollToBottom() {
         chatBody.scrollTop = chatBody.scrollHeight;
@@ -356,8 +308,15 @@ function initTerminalQA() {
     function addMessage(text, type) {
         var msg = document.createElement('div');
         msg.className = 'chat-message ' + type;
-        var avatarHTML = type === 'reply' ? '<div class="chat-msg-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>' : '';
-        msg.innerHTML = avatarHTML + '<div class="chat-bubble">' + text + '</div>';
+        if (type === 'reply') {
+            msg.insertAdjacentHTML('beforeend', assistantAvatar);
+        }
+
+        var bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+
+        msg.appendChild(bubble);
         chatBody.appendChild(msg);
         scrollToBottom();
         return msg;
@@ -367,7 +326,13 @@ function initTerminalQA() {
         var msg = document.createElement('div');
         msg.className = 'chat-message reply';
         msg.id = 'typingIndicator';
-        msg.innerHTML = '<div class="chat-msg-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+        msg.insertAdjacentHTML('beforeend', assistantAvatar);
+
+        var bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+
+        msg.appendChild(bubble);
         chatBody.appendChild(msg);
         scrollToBottom();
     }
@@ -384,39 +349,90 @@ function initTerminalQA() {
         if (chatSendBtn) chatSendBtn.disabled = locked;
     }
 
-    function findAnswer(text) {
-        var lower = text.toLowerCase();
-        for (var i = 0; i < qaData.length; i++) {
-            for (var j = 0; j < qaData[i].keywords.length; j++) {
-                if (lower.indexOf(qaData[i].keywords[j]) !== -1) {
-                    return qaData[i].answer;
-                }
-            }
-        }
-        return defaultAnswer;
+    function extractAssistantAnswer(data) {
+        if (!data) return '';
+        if (typeof data === 'string') return data.trim();
+        if (typeof data.answer === 'string' && data.answer.trim()) return data.answer.trim();
+        if (typeof data.response === 'string' && data.response.trim()) return data.response.trim();
+        if (typeof data.message === 'string' && data.message.trim()) return data.message.trim();
+        return '';
     }
 
-    function sendReply(questionText, answer) {
+    function wait(ms) {
+        return new Promise(function(resolve) {
+            setTimeout(resolve, ms);
+        });
+    }
+
+    async function requestAssistantReply(questionText) {
+        var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        var timeoutId = null;
+
+        if (controller) {
+            timeoutId = setTimeout(function() {
+                controller.abort();
+            }, requestTimeoutMs);
+        }
+
+        try {
+            var response = await fetch(chatApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: questionText
+                }),
+                signal: controller ? controller.signal : undefined
+            });
+
+            if (!response.ok) {
+                throw new Error('Assistant request failed with status ' + response.status);
+            }
+
+            var data = await response.json();
+            var answer = extractAssistantAnswer(data);
+
+            if (!answer) {
+                throw new Error('Assistant response did not include an answer.');
+            }
+
+            return answer;
+        } finally {
+            if (timeoutId) clearTimeout(timeoutId);
+        }
+    }
+
+    async function sendReply(questionText) {
         if (isTyping) return;
         setLocked(true);
 
         addMessage(questionText, 'sent');
+        await wait(250);
+        showTypingDots();
 
-        setTimeout(function() {
-            showTypingDots();
-            setTimeout(function() {
-                removeTypingDots();
-                addMessage(answer, 'reply');
-                setLocked(false);
-            }, 1200);
-        }, 400);
+        try {
+            var answer = await requestAssistantReply(questionText);
+            await wait(500);
+            removeTypingDots();
+            addMessage(answer, 'reply');
+        } catch (error) {
+            removeTypingDots();
+            addMessage(fallbackErrorMessage, 'reply');
+            if (window.console && typeof window.console.error === 'function') {
+                window.console.error('EB assistant request failed:', error);
+            }
+        } finally {
+            setLocked(false);
+            if (chatInput) chatInput.focus();
+        }
     }
 
     // Predefined button clicks
-    buttons.forEach(function(btn, i) {
+    buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var idx = buttonMap[i];
-            sendReply(btn.textContent, qaData[idx].answer);
+            var prompt = btn.getAttribute('data-prompt') || btn.textContent;
+            sendReply(prompt);
         });
     });
 
@@ -426,8 +442,7 @@ function initTerminalQA() {
         if (!text || isTyping) return;
 
         chatInput.value = '';
-        var answer = findAnswer(text);
-        sendReply(text, answer);
+        sendReply(text);
     }
 
     if (chatInput) {
